@@ -3,14 +3,17 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    
-    $productURL = route('product.view', ['lang' => 'en', 'id' => 1]);
-    dd($productURL);
-    
     return view('welcome');
 });
 
-Route::get('/{lang}/product/{id}', function (string $lang, int $id) {
-    // if route url changes (ex: '/add/{lang}/test/product/{id}'),
-    // the route is stealed working
-})->name('product.view');
+Route::prefix('admin')->group(function () {
+    Route::get('/users', function(){
+        return '/admin/users'; // route is /admin/users not /users
+    });
+});
+
+Route::name('admin.')->group(function () {
+    Route::get('/users', function(){
+        return '/users'; // But route name is admin.users not /users
+    })->name('users');
+});
