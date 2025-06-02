@@ -6,14 +6,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('/users', function(){
-        return '/admin/users'; // route is /admin/users not /users
-    });
-});
+Route::get('/about', function(){
+    return 'About';
+})->name('about');
 
-Route::name('admin.')->group(function () {
-    Route::get('/users', function(){
-        return '/users'; // But route name is admin.users not /users
-    })->name('users');
+Route::fallback(function () {
+    return '404';
 });
