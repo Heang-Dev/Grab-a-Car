@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CarController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,11 +11,4 @@ Route::get('/about', function(){
     return 'About';
 })->name('about');
 
-// Route::controller(CarController::class)->group(function(){
-//     Route::get('/car', 'index')->name('car.index');
-//     Route::get('/car/create', 'create')->name('car.create');
-//     Route::post('/car', 'store')->name('car.store');
-// });
-
-Route::get('/car', CarController::class);
-Route::get('/car', [CarController::class, 'index']);
+Route::resource('/products', ProductController::class);
