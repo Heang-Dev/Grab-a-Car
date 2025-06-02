@@ -11,4 +11,8 @@ Route::get('/about', function(){
     return 'About';
 })->name('about');
 
-Route::get('/car', [CarController::class,'index']);
+Route::controller(CarController::class)->group(function(){
+    Route::get('/car', 'index')->name('car.index');
+    Route::get('/car/create', 'create')->name('car.create');
+    Route::post('/car', 'store')->name('car.store');
+});
