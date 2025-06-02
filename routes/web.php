@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,6 +11,4 @@ Route::get('/about', function(){
     return 'About';
 })->name('about');
 
-Route::fallback(function () {
-    return '404';
-});
+Route::get('/car', [CarController::class,'index']);
