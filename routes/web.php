@@ -13,6 +13,6 @@ Route::get('/', function () {
 
 Route::view('/about', 'about');
 
-Route::get('/products/{category?}', function (string $category = null) {
-    return 'Products ID : ' . $category;
-});
+Route::get('/products/{id?}', function (string $id) {
+    return 'Work! : ' . $id;
+})->whereNumber('id');
